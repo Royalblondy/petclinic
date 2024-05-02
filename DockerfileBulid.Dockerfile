@@ -5,7 +5,6 @@ COPY build.gradle gradlew settings.gradle /app/
 WORKDIR /app
 RUN ./gradlew build -x test
 FROM eclipse-temurin:17-jre-alpine
-COPY --from=build /app/build/libs/spring-petclinic-3.1.0.jar /app/app.jar
 WORKDIR /app
 
 
