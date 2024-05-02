@@ -9,12 +9,12 @@ pipeline {
         }
         stage("Build docker image"){
             steps{
-                sh "docker build -t spring-petclinic -f DockerfileBuild.Dockerfile ."
+                sh "docker build -t spring-petclinic -f ./DockerfileBulid.Dockerfile ."
             }
         }
         stage("Test container docker image"){
             steps{
-                sh "docker build -t petclinic-test -f DockerfileTest.Dockerfile ."
+                sh "docker build -t petclinic-test -f ./DockerfileTest.Dockerfile ."
             }
             post {
                 always {
