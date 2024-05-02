@@ -16,11 +16,6 @@ pipeline {
             steps{
                 sh "docker build -t petclinic-test -f ./DockerfileTest.Dockerfile ."
             }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'logs_${env.BUILD_NUMBER}.log', fingerprint: true
-                }
-            }
         }
     }
 }
