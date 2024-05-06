@@ -33,6 +33,7 @@ pipeline {
                     }
                 }
             }
+
         stage("Test"){
             steps{
                 script {
@@ -42,6 +43,7 @@ pipeline {
                     """
                 }
             }
+        }
         stage('Tag docker image') {
             steps {
                 script {
@@ -49,6 +51,7 @@ pipeline {
                     }
                 }
             }
+
         stage('Login into Docker Hub') {
             steps {
                 script {
@@ -67,18 +70,18 @@ pipeline {
                 }
             }
         stage('Save docker image') {
-        steps {
-            script {
-                sh "docker save -o petclinic-test_${env.BUILD_NUMBER}.tar petclinic-test:latest"
+            steps {
+                script {
+                   sh "docker save -o petclinic-test_${env.BUILD_NUMBER}.tar petclinic-test:latest"
+                }
             }
         }
-    }
 
-    stage('Archive docker image') {
-        steps {
-            archiveArtifacts artifacts: "petclinic-test_${env.BUILD_NUMBER}.tar", fingerprint: true
-        }
-    }
+        stage('Archive docker image') {
+            steps {
+                archiveArtifacts artifacts: "petclinic-test_${env.BUILD_NUMBER}.tar", fingerprint: true
+            }
+         }
     }
 
         post{
@@ -90,5 +93,5 @@ pipeline {
                     }
                 }
             }
-        }
-    }
+ }
+
