@@ -86,8 +86,9 @@ pipeline {
                 script {
                         sh "docker stop petclinic"
                         sh "docker rm petclinic"
-                        sh "docker rmi patry77/petclinic-test:$PROJECT_VERSION"                 
+                        sh "docker rmi Royalblondy/petclinic-test:$PROJECT_VERSION"                 
                     }
                 }
             }
         }
+    }
